@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        width: 900px;
+        height: 8000px;
+        background-color: beige;
+        position: relative;
+      }
+      .child {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* .child-1 {
+        position: static;
+        left: 50%;
+      } */
+      /* .child-2 {
+        position: relative;
+        left: 120px;
+      } */
+
+      /* .child-3 {
+        position: absolute;
+        top: 20px;
+        left: 120px;
+      } */
+      /* .child-4 {
+        position: fixed;
+        left: 50%;
+      } */
+      .child-5 {
+        position: sticky;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="child child-1">position-1</div>
+      <div class="child child-2">position-2</div>
+      <div class="child child-3">position-3</div>
+      <div class="child child-4">position-4</div>
+      <div class="child child-5">position-5</div>
+    </div>
+  </body>
+</html>
