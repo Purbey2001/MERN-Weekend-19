@@ -26,18 +26,42 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        /* CSS animation shorthand:
+           animation: <name> <duration> <iteration-count> <timing-function>;
+           - name: keyframes identifier to run
+           - duration: total time for one cycle
+           - iteration-count: infinite | number (1,2,3...)
+           - timing-function: speed curve (ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier)
+        */
         animation: jump 2s infinite ease-in-out;
+
+        /* Useful optional animation properties (not used here):
+           animation-delay: wait before animation starts (e.g., 500ms)
+           animation-direction: normal | reverse | alternate | alternate-reverse
+           animation-fill-mode: none | forwards | backwards | both
+           animation-play-state: running | paused
+        */
       }
 
+      /* @keyframes defines animation stages using percentages:
+         0%   = start state
+         50%  = middle state
+         100% = end state (same as 'to')
+         Browser interpolates values between stages automatically.
+      */
       @keyframes jump {
         0% {
+          /* Ball at original position */
           transform: translateY(0);
         }
         50% {
+          /* Negative Y moves element upward */
           transform: translateY(-300px);
+          /* You can animate colors, opacity, transform, etc. */
           background-color: red;
         }
         100% {
+          /* Return to ground to complete one loop */
           transform: translateY(0);
         }
       }

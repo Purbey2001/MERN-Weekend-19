@@ -15,6 +15,7 @@
         width: 900px;
         height: 8000px;
         background-color: beige;
+        /* Creates a positioning context for absolutely positioned children */
         position: relative;
       }
       .child {
@@ -26,24 +27,52 @@
         align-items: center;
         justify-content: center;
       }
+      /* ---------------- POSITION NOTES ----------------
+         position: static (default)
+         - Normal document flow
+         - top/right/bottom/left and z-index do not affect static elements
+      */
       /* .child-1 {
         position: static;
         left: 50%;
       } */
+
+      /* position: relative
+         - Element keeps its original space in layout
+         - top/left/etc move it visually from its normal position
+         - Often used as a parent reference for absolute children
+      */
       /* .child-2 {
         position: relative;
         left: 120px;
       } */
 
+      /* position: absolute
+         - Removed from normal flow (other elements ignore its space)
+         - Positioned using nearest ancestor with non-static position
+         - If no such ancestor, it positions relative to viewport/page
+      */
       /* .child-3 {
         position: absolute;
         top: 20px;
         left: 120px;
       } */
+
+      /* position: fixed
+         - Removed from normal flow
+         - Positioned relative to viewport
+         - Stays in same spot while page scrolls
+      */
       /* .child-4 {
         position: fixed;
         left: 50%;
       } */
+
+      /* position: sticky
+         - Behaves like relative until scroll crosses threshold (top: 0 here)
+         - Then behaves like fixed within its scroll container
+         - Requires an offset (top/right/bottom/left) to activate
+      */
       .child-5 {
         position: sticky;
         top: 0;

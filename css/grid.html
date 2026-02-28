@@ -16,15 +16,38 @@
         width: 100vw;
         height: 100vh;
         background-color: beige;
+        /* Enables CSS Grid layout for direct children */
         display: grid;
+
+        /* Defines column tracks:
+           repeat(3, 1fr) means 3 equal-width columns.
+           fr = fraction of available free space.
+        */
         /* grid-template-columns: repeat(3, 1fr); */
+
+        /* Control spacing between tracks:
+           - column-gap: horizontal gaps
+           - row-gap: vertical gaps
+           - gap: shorthand for both
+        */
         /* column-gap: 10px;
         row-gap: 10px; */
         gap: 10px;
+
+        /* Aligns the whole grid inside the container when grid is smaller:
+           justify-content => horizontal alignment of grid tracks
+           align-content => vertical alignment of grid tracks
+        */
         /* justify-content: center;
         align-content: center; */
         /* justify-content: center; */
         /* align-content: center; */
+
+        /* Named grid areas create a visual map:
+           - Each quoted row is one grid row
+           - Repeated names merge cells into a larger area
+           - Every named item must match with child grid-area value
+        */
         grid-template-areas: "header header header" "sidebar content-1 content-1" "sidebar content-2 content-3" "footer footer footer";
       }
       .child {
@@ -32,31 +55,38 @@
         height: 100px; */
         background-color: red;
         /* margin: 10px; */
+        /* Flex used only to center text inside each grid item */
         display: flex;
         align-items: center;
         justify-content: center;
       }
       .header {
+        /* Places this item into the "header" area from template */
         grid-area: header;
         background-color: aqua;
       }
       .sidebar {
+        /* Sidebar spans multiple rows because area name repeats */
         grid-area: sidebar;
         background-color: pink;
       }
       .content-1 {
+        /* content-1 spans two columns in row 2 */
         grid-area: content-1;
         background-color: yellow;
       }
       .content-2 {
+        /* Single-cell area in row 3, column 2 */
         grid-area: content-2;
         background-color: green;
       }
       .content-3 {
+        /* Single-cell area in row 3, column 3 */
         grid-area: content-3;
         background-color: blue;
       }
       .footer {
+        /* Footer spans full width across all columns */
         grid-area: footer;
         background-color: orange;
       }

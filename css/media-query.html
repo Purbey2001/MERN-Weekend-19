@@ -5,15 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      /* Base styles (default styles without any media query):
+         Start with a common layout, then override at breakpoints.
+      */
       .container {
         width: 100vw;
         height: 100vh;
         background-color: beige;
       }
       .container img {
+        /* Default image size for larger screens */
         width: 400px;
         height: 500px;
       }
+
+      /* ---------------- MEDIA QUERY NOTES ----------------
+         Media query syntax:
+         @media <media-type> and (<feature>) { ... }
+
+         Common media types:
+         - all (default)
+         - screen (phones, tablets, laptops, monitors)
+         - print (printed pages / print preview)
+
+         Common media features:
+         - width / height
+         - min-width / max-width
+         - orientation: portrait | landscape
+         - prefers-color-scheme: dark | light
+
+         Mobile-first approach (recommended):
+         1) Write base CSS for small screens first.
+         2) Use min-width queries to enhance for larger screens.
+
+         Desktop-first approach:
+         1) Write base CSS for large screens.
+         2) Use max-width queries to simplify for smaller screens.
+      ----------------------------------------------------- */
+
+      /* Example: device orientation based change */
       /* @media (orientation: landscape) {
         .container img {
           width: 100px;
@@ -21,10 +51,36 @@
           border-radius: 50%;
         }
       } */
+
+      /* Example: max-width breakpoint (desktop-first style)
+         Applied when viewport width is <= 500px.
+      */
       /* @media (max-width: 500px) {
-        ///
+        .container {
+          background-color: lightblue;
+        }
+        .container img {
+          width: 220px;
+          height: 280px;
+        }
+      } */
+
+      /* Example: min-width breakpoints (mobile-first style)
+         Applied when viewport width is >= breakpoint value.
+      */
+      /* @media (min-width: 768px) {
+        .container img {
+          width: 320px;
+          height: 420px;
+        }
       }
-      @media (max-0he) */
+
+      @media (min-width: 1024px) {
+        .container img {
+          width: 400px;
+          height: 500px;
+        }
+      } */
     </style>
   </head>
   <body>
