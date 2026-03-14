@@ -82,6 +82,7 @@
 - Freezing objects, sealing objects
 - Shallow & Deep Copy
 - Closures
+- Two Button Problem (classic problem)
 - Callback Functions
 - Currying
 - Higher-Order Functions
@@ -91,7 +92,6 @@
 
 ### JavaScript (Advanced Concepts)
 
-- Two Button Problem (classic problem)
 - DOM Manipulation & Vanilla JS
 - Event Listeners
 - Common DOM Events
