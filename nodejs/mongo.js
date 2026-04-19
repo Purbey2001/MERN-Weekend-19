@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 const app = express();
 app.use(express.json());
-// console.log(mongoose);
+
 
 mongoose
   .connect(
@@ -16,7 +16,9 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
-  });
+});
+
+
 const userSchema = new mongoose.Schema({
   email: String,
   password: String,
