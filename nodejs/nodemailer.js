@@ -7,13 +7,13 @@ const app = express();
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "vikaskumar20012001@gmail.com",
+    user: "[EMAIL_ADDRESS]",
     pass: "replace your password",
   },
 });
 const mailOptions = {
-  from: "vikaskumar20012001@gmail.com",
-  to: "",
+  from: "[EMAIL_ADDRESS]",
+  to: "[EMAIL_ADDRESS]",
   subject: "Welcome aboard!",
   text: "This is a test email sent from Node.js",
 };
