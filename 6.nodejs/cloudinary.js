@@ -49,6 +49,19 @@ app.post("/upload", upload.single("dp"), async (req, res) => {
   }
 });
 
+// Get all images from Cloudinary
+app.get("/images", async (req, res) => {
+  try {
+    const result = await cloudinary.api.resources();
+    res.send(result.resources);
+  } catch (error) {
+    res.status(500).send({
+      message: "An error occurred while fetching images.",
+      error: error.message,
+    });
+  }
+});
+
 // Start server
 // const port = process.env.PORT || 3000;
 app.listen(PORT, () => {

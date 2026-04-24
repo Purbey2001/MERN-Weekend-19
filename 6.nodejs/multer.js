@@ -21,6 +21,8 @@ app.post("/register", upload.single("dp"), (req, res) => {
   console.log(req.file);
   res.send("file uploaded");
 });
+
+
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
