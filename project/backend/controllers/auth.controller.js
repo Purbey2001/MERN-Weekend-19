@@ -1,8 +1,11 @@
-import express from "express";
 import asyncHandler from "../utils/asyncHandler.utils.js";
 
-const authController = express.Router();
+export const register = asyncHandler(async (req, res, next) => {
+  // TODO: Implement register logic
+  res.status(201).json({ message: "Register successful" });
+});
 
-authController.post("/register",)
-
-export default authController;
+export const login = asyncHandler(async (req, res, next) => {
+  // TODO: Implement login logic
+  res.status(200).json({ message: "Login successful" });
+});

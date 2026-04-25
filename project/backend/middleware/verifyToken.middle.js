@@ -1,17 +1,25 @@
-//verfication middleware for header
-const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization;
-  if (!token || !token.startsWith("Bearer"))
-    return res.status(401).json({ message: "unauthorized" });
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+import asyncHandler from "../utils/asyncHandler.utils.js";
+import ApiError from "../utils/errorHandler.utils.js";
+dotenv.config({ path: "./env/.env" });
 
-  const tokenValue = token.split(" ")[1];
+const verificationToken = asyncHandler(async (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    throw new ApiError(401, "Access denied because no token provided");
+  }
+  
+  const token = authHeader.split(" ")[1];
+  
   try {
-    const isVerified = jwt.verify(tokenValue, "secretkey");
-    req.user = isVerified;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
     next();
   } catch (err) {
-    console.log(err);
+    throw new ApiError(401, "Invalid or expired token");
   }
-};
+});
 
-export default verifyToken;
+export default verificationToken;

@@ -2,17 +2,23 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config({ path: "./env/.env" });
 
-const connectDB = async () => {
-  //todo-> retrying process should be there
-  try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("MongoDB connected");
-  } catch (err) {
-    console.log(err);
-    process.exit(1);
+const connectDB = async (retries = 5, delay = 5000) => {
+  for (let i = 0; i < retries; i++) {
+    try {
+      await mongoose.connect(process.env.MONGO_URI);
+      console.log("MongoDB connected");
+      return;
+    } catch (err) {
+      console.log(
+        `MongoDB connection failed (Attempt ${i + 1}/${retries}). Retrying in ${delay / 1000}s...`,
+      );
+      if (i === retries - 1) {
+        console.error("All connection retries failed:", err.message);
+        process.exit(1);
+      }
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
   }
 };
-
-//suggestions:try to use IIFE for better memory management
 
 export default connectDB;
